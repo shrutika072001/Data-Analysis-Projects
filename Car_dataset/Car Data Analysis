@@ -1,0 +1,32 @@
+#Import 
+import pandas as pd
+
+#Import Dataset
+car=pd.read_csv('/content/Cars Data.csv')
+car.head()
+car.shape
+
+#Data Clearing
+car.isnull().sum()
+car['Cylinders'].fillna(car['Cylinders'].mean(),inplace=True)
+car['Weight'].fillna(car['Weight'].mean(),inplace=True)
+car['Wheelbase'].fillna(car['Wheelbase'].mean(),inplace=True)
+car['Length'].fillna(car['Length'].mean(),inplace=True)
+car['MPG_Highway'].fillna(car['MPG_Highway'].mean(),inplace=True)
+car['MPG_City'].fillna(car['MPG_City'].mean(),inplace=True)
+car['Horsepower'].fillna(car['Horsepower'].mean(),inplace=True)
+car['EngineSize'].fillna(car['EngineSize'].mean(),inplace=True)
+car.isnull().sum()
+
+#value_Counts
+car['Make'].value_counts()
+
+#Filtering data
+car[car['Origin'].isin(['Asia','Europe'])]
+
+#Removing data
+car[~(car['Weight']>4000)]
+
+#Change the values
+car['MPG_City']=car['MPG_City'].apply(lambda x:x+3)
+car
